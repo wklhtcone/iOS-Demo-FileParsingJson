@@ -1,4 +1,3 @@
-- **Demo代码地址：[FileParsingJson](https://github.com/wklhtcone/iOS-Demo-FileParsingJson)**
 ## 1. 本地Json文件与运行效果
 
 ```javascript
