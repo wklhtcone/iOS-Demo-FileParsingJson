@@ -1,3 +1,4 @@
+- **Demo代码地址：[FileParsingJson](https://github.com/wklhtcone/iOS-Demo-FileParsingJson)**
 ## 1. 本地Json文件与运行效果
 
 ```javascript
@@ -34,7 +35,7 @@
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210206204820204.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MDg3NDI1,size_16,color_FFFFFF,t_70)
 ## 2. Json解析
-### 数据结构
+### 2.1 数据结构
 
 > Json是key-value的键值对，根据Json中的内容设计相应的数据结构才能正确解析数据：变量名和key一致、变量类型和value类型一致
 
@@ -56,7 +57,7 @@ struct ResultItem: Codable {
 }
 ```
 
-### 获取本地Json文件路径并转为URL
+### 2.2 获取本地Json文件路径并转为URL
 - 通过`mainBundle`获取 json 文件路径，因为可能找不到路径，比如文件名、类型名参数写错或文件不存在，因此要用`guard ... else`处理读不到的情况
 - `URL(fileURLWithPath:)`方法将文件路径转为 url
 ```swift
@@ -67,7 +68,7 @@ else{
 let url = URL(fileURLWithPath: path)
 ```
 
-### 将URL内容读入NSData、再读入结构体
+### 2.3 将URL内容读入NSData、再读入结构体
 - `Data(contentsOf: url)`和`JSONDecoder().decode()`都可能失败`throw`异常，因此放在`do{} catch{}`中，并`try`
 - 上面两个方法任意一个执行出错，`result`就成了`nil`，因此声明为可选型
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210206213107405.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MDg3NDI1,size_16,color_FFFFFF,t_70)
@@ -85,7 +86,7 @@ catch {
 ```
 
 ## 3. 创建Table View并读入数据
-###  代码方式创建Table View
+###  3.1 代码方式创建Table View
 - 设置Table View样式、cell复用identifier
 - `{//代码体}()`，匿名函数格式，小括号表示立即调用大括号中定义的函数体
 
@@ -98,7 +99,7 @@ let tableView:UITableView = {
 ```
 
 
-###  设置Table View
+###  3.2 设置Table View
 ```swift
 override func viewDidLoad() {
     super.viewDidLoad()
@@ -112,7 +113,7 @@ override func viewDidLoad() {
 }
 ```
 
-### 实现Table View的数据源方法
+### 3.3 实现Table View的数据源方法
 1. section数，即`ResultItem`数组中的元素个数，`result`为`nil`时返回 0
 
 ```swift
